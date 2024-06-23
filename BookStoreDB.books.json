@@ -1,0 +1,353 @@
+[
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "summary": "A novel set in the American South during the 1930s, dealing with serious issues of rape and racial inequality.",
+    "publishYear": 1960,
+    "isbn": "9780061120084"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "summary": "A dystopian novel depicting a totalitarian regime and its effects on society.",
+    "publishYear": 1949,
+    "isbn": "9780451524935"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "summary": "A story of teenage angst and alienation in American society.",
+    "publishYear": 1951,
+    "isbn": "9780316769488"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "summary": "A romantic novel set in rural England, focusing on the dynamics of class, marriage, and relationships.",
+    "publishYear": 1813,
+    "isbn": "9780141439518"
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "summary": "A novel depicting the decadence of the Jazz Age and the American Dream.",
+    "publishYear": 1925,
+    "isbn": "9780743273565"
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "summary": "A fantasy novel about the journey of Bilbo Baggins, a hobbit, to win a share of the treasure guarded by the dragon Smaug.",
+    "publishYear": 1937,
+    "isbn": "9780345534835"
+  },
+  {
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "summary": "A novel about the obsessive quest of Captain Ahab for revenge against the white whale that destroyed his ship and severed his leg.",
+    "publishYear": 1851,
+    "isbn": "9781503280786"
+  },
+  {
+    "title": "Harry Potter and the Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "summary": "The first book in the Harry Potter series, following the magical journey of a young wizard.",
+    "publishYear": 1997,
+    "isbn": "9780747532699"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "summary": "An epic high-fantasy novel about the quest to destroy the One Ring and defeat the Dark Lord Sauron.",
+    "publishYear": 1954,
+    "isbn": "9780618640157"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "summary": "A dystopian novel depicting a future society where humans are genetically engineered and socially conditioned for compliance.",
+    "publishYear": 1932,
+    "isbn": "9780060850524"
+  },
+  {
+    "title": "Crime and Punishment",
+    "author": "Fyodor Dostoevsky",
+    "summary": "A psychological novel that explores morality, guilt, and redemption through the experiences of Rodion Raskolnikov, an impoverished ex-student in St. Petersburg.",
+    "publishYear": 1866,
+    "isbn": "9780679734505"
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "summary": "A post-apocalyptic novel about a father and son's journey across a desolate landscape.",
+    "publishYear": 2006,
+    "isbn": "9780307387899"
+  },
+  {
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë",
+    "summary": "A novel set in the Yorkshire moors, depicting the passionate and destructive love between Heathcliff and Catherine Earnshaw.",
+    "publishYear": 1847,
+    "isbn": "9780141439556"
+  },
+  {
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel García Márquez",
+    "summary": "A novel chronicling the Buendía family through several generations in the fictional town of Macondo.",
+    "publishYear": 1967,
+    "isbn": "9780060883287"
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "summary": "A philosophical novel about the consequences of vanity and hedonism.",
+    "publishYear": 1890,
+    "isbn": "9780486278070"
+  },
+  {
+    "title": "The Adventures of Huckleberry Finn",
+    "author": "Mark Twain",
+    "summary": "A novel depicting the adventures of a young boy and a runaway slave as they journey down the Mississippi River.",
+    "publishYear": 1884,
+    "isbn": "9780486280615"
+  },
+  {
+    "title": "Anna Karenina",
+    "author": "Leo Tolstoy",
+    "summary": "A novel exploring the themes of love, infidelity, and societal norms in 19th-century Russia.",
+    "publishYear": 1877,
+    "isbn": "9780143035008"
+  },
+  {
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë",
+    "summary": "A novel about the struggles and triumphs of a young orphan girl, Jane Eyre, in 19th-century England.",
+    "publishYear": 1847,
+    "isbn": "9780141441146"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "author": "John Steinbeck",
+    "summary": "A novel about a poor family of tenant farmers driven from their Oklahoma home by drought, economic hardship, and changes in financial and agricultural industries.",
+    "publishYear": 1939,
+    "isbn": "9780143039433"
+  },
+  {
+    "title": "Catch-22",
+    "author": "Joseph Heller",
+    "summary": "A satirical novel set during World War II, focusing on the absurdities of war and bureaucracy.",
+    "publishYear": 1961,
+    "isbn": "9780684833392"
+  },
+  {
+    "title": "Slaughterhouse-Five",
+    "author": "Kurt Vonnegut",
+    "summary": "A science fiction-infused anti-war novel about the bombing of Dresden in World War II.",
+    "publishYear": 1969,
+    "isbn": "9780385333849"
+  },
+  {
+    "title": "Gone with the Wind",
+    "author": "Margaret Mitchell",
+    "summary": "A novel set in the American South during the Civil War and Reconstruction era, focusing on the life of Scarlett O'Hara.",
+    "publishYear": 1936,
+    "isbn": "9781416548942"
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "summary": "A novel narrated by Death about a young girl in Nazi Germany who steals books and shares them with her neighbors and the Jewish man hidden in her basement.",
+    "publishYear": 2005,
+    "isbn": "9780375842207"
+  },
+  {
+    "title": "Les Misérables",
+    "author": "Victor Hugo",
+    "summary": "A historical novel set in early 19th-century France, depicting the struggles of ex-convict Jean Valjean and his experience of redemption.",
+    "publishYear": 1862,
+    "isbn": "9780451525260"
+  },
+  {
+    "title": "The Scarlet Letter",
+    "author": "Nathaniel Hawthorne",
+    "summary": "A novel about the consequences of adultery and shame in Puritan New England.",
+    "publishYear": 1850,
+    "isbn": "9780451531353"
+  },
+  {
+    "title": "The Outsiders",
+    "author": "S.E. Hinton",
+    "summary": "A novel about the rivalry between two groups of teenagers, the Greasers and the Socs, in a small American town.",
+    "publishYear": 1967,
+    "isbn": "9780140385724"
+  },
+  {
+    "title": "A Clockwork Orange",
+    "author": "Anthony Burgess",
+    "summary": "A dystopian novel about juvenile delinquency and the government's attempt to control behavior through psychological conditioning.",
+    "publishYear": 1962,
+    "isbn": "9780393312836"
+  },
+  {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "summary": "A novel about a scientist who creates a grotesque creature in an unorthodox scientific experiment.",
+    "publishYear": 1818,
+    "isbn": "9780486282114"
+  },
+  {
+    "title": "The Brothers Karamazov",
+    "author": "Fyodor Dostoevsky",
+    "summary": "A novel exploring complex themes such as faith, reason, and morality through the lives of three brothers.",
+    "publishYear": 1880,
+    "isbn": "9780374528379"
+  },
+  {
+    "title": "The Count of Monte Cristo",
+    "author": "Alexandre Dumas",
+    "summary": "A novel about a man who is falsely imprisoned and seeks revenge against those who betrayed him.",
+    "publishYear": 1844,
+    "isbn": "9780140449266"
+  },
+  {
+    "title": "Middlemarch",
+    "author": "George Eliot",
+    "summary": "A novel that explores the lives and relationships of the inhabitants of a fictional English town.",
+    "publishYear": 1871,
+    "isbn": "9780141439549"
+  },
+  {
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood",
+    "summary": "A dystopian novel set in a future totalitarian society where women are subjugated.",
+    "publishYear": 1985,
+    "isbn": "9780385490818"
+  },
+  {
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "summary": "An epic novel set during the Napoleonic Wars, depicting Russian society in the early 19th century.",
+    "publishYear": 1869,
+    "isbn": "9780140447934"
+  },
+  {
+    "title": "Don Quixote",
+    "author": "Miguel de Cervantes",
+    "summary": "A satirical novel about an elderly man who believes he is a knight and sets out on adventures with his loyal squire, Sancho Panza.",
+    "publishYear": 1605,
+    "isbn": "9780060934347"
+  },
+  {
+    "title": "The Stranger",
+    "author": "Albert Camus",
+    "summary": "A novel about a detached and amoral Algerian man who faces the absurdity of human existence.",
+    "publishYear": 1942,
+    "isbn": "9780679720201"
+  },
+  {
+    "title": "The Stand",
+    "author": "Stephen King",
+    "summary": "A post-apocalyptic horror novel depicting the aftermath of a deadly plague.",
+    "publishYear": 1978,
+    "isbn": "9780385199575"
+  },
+  {
+    "title": "The Adventures of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "summary": "A collection of detective stories featuring Sherlock Holmes and his loyal friend, Dr. Watson.",
+    "publishYear": 1892,
+    "isbn": "9780140439083"
+  },
+  {
+    "title": "The Little Prince",
+    "author": "Antoine de Saint-Exupéry",
+    "summary": "A novella about a young prince who travels from planet to planet, meeting various inhabitants and learning about love, loss, and loneliness.",
+    "publishYear": 1943,
+    "isbn": "9780156012195"
+  },
+  {
+    "title": "Great Expectations",
+    "author": "Charles Dickens",
+    "summary": "A bildungsroman novel tracing the growth and personal development of an orphan named Pip.",
+    "publishYear": 1861,
+    "isbn": "9780141439563"
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "summary": "A novel about a young shepherd named Santiago who dreams of finding a treasure in Egypt and learns important life lessons along the way.",
+    "publishYear": 1988,
+    "isbn": "9780061122415"
+  },
+  {
+    "title": "Heart of Darkness",
+    "author": "Joseph Conrad",
+    "summary": "A novella exploring the darkness of the human psyche through the journey of Charles Marlow into the African Congo.",
+    "publishYear": 1899,
+    "isbn": "9780140186529"
+  },
+  {
+    "title": "The Master and Margarita",
+    "author": "Mikhail Bulgakov",
+    "summary": "A novel blending supernatural elements with political satire, focusing on Satan's visit to Soviet Moscow and its impact on its inhabitants.",
+    "publishYear": 1967,
+    "isbn": "9780679760801"
+  },
+  {
+    "title": "The Bell Jar",
+    "author": "Sylvia Plath",
+    "summary": "A semi-autobiographical novel about a young woman's descent into mental illness.",
+    "publishYear": 1963,
+    "isbn": "9780060837020"
+  },
+  {
+    "title": "East of Eden",
+    "author": "John Steinbeck",
+    "summary": "A novel about two families, the Trasks and the Hamiltons, and their intertwined destinies in the Salinas Valley.",
+    "publishYear": 1952,
+    "isbn": "9780140186390"
+  },
+  {
+    "title": "Norwegian Wood",
+    "author": "Haruki Murakami",
+    "summary": "A novel exploring themes of loss, love, and mental health among college students in 1960s Tokyo.",
+    "publishYear": 1987,
+    "isbn": "9780375704024"
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "summary": "A horror novel about a family that becomes haunted while wintering in a deserted hotel.",
+    "publishYear": 1977,
+    "isbn": "9780307743657"
+  },
+  {
+    "title": "The Sun Also Rises",
+    "author": "Ernest Hemingway",
+    "summary": "A novel depicting the lives of expatriates in the aftermath of World War I, focusing on the Lost Generation.",
+    "publishYear": 1926,
+    "isbn": "9780684800714"
+  },
+  {
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "summary": "A novel about the friendship between two boys in Afghanistan and the tragic events that separate them.",
+    "publishYear": 2003,
+    "isbn": "9781594480003"
+  },
+  {
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "summary": "A mystery thriller novel following journalist Mikael Blomkvist and hacker Lisbeth Salander as they investigate a decades-old disappearance.",
+    "publishYear": 2005,
+    "isbn": "9780307269751"
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "summary": "A science fiction novel about an astronaut stranded on Mars and his struggle to survive.",
+    "publishYear": 2011,
+    "isbn": "9780553418026"
+  }
+]
+
