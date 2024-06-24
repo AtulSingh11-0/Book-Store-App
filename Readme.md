@@ -130,8 +130,6 @@ Once the application is running, you can interact with the API using tools like 
 
 ## Example Responses
 
-### Create a new book
-
 **Request:**
 
 - **Create a new book**
