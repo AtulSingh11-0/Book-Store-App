@@ -148,7 +148,9 @@ Once the application is running, you can interact with the API using tools like 
         "author": "Example Author",
         "summary": "Example Summary",
         "publishYear": 2023,
-        "isbn": "1234567890123"
+        "isbn": "1234567890123",
+        "createdDate": "2024-06-24T10:21:17.068+00:00",
+        "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
       }
     }
     ```
@@ -169,7 +171,9 @@ Once the application is running, you can interact with the API using tools like 
         "author": "Example Author",
         "summary": "Example Summary",
         "publishYear": 2023,
-        "isbn": "1234567890123"
+        "isbn": "1234567890123",
+        "createdDate": "2024-06-24T10:21:17.068+00:00",
+        "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
       }
     }
     ```
@@ -191,7 +195,9 @@ Once the application is running, you can interact with the API using tools like 
           "author": "Example Author",
           "summary": "Example Summary",
           "publishYear": 2023,
-          "isbn": "1234567890123"
+          "isbn": "1234567890123",
+          "createdDate": "2024-06-24T10:21:17.068+00:00",
+          "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
         },
         {
           "id": "60d5f9a0c2f4b146d4e29e3b",
@@ -199,7 +205,9 @@ Once the application is running, you can interact with the API using tools like 
           "author": "Another Author",
           "summary": "Another Summary",
           "publishYear": 2022,
-          "isbn": "9876543210987"
+          "isbn": "9876543210987",
+          "createdDate": "2024-06-24T10:21:17.068+00:00",
+          "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
         }
       ],
       "pagination": {
@@ -233,7 +241,9 @@ Once the application is running, you can interact with the API using tools like 
           "author": "Example Author",
           "summary": "Example Summary",
           "publishYear": 2023,
-          "isbn": "1234567890123"
+          "isbn": "1234567890123",
+          "createdDate": "2024-06-24T10:21:17.068+00:00",
+          "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
         }
       ],
       "pagination": {
@@ -261,7 +271,9 @@ Custom exception handling is implemented to manage errors gracefully. The follow
 Example of an error response:
 ```json
 {
-  "status": "error",
-  "statusCode": 404,
-  "message": "Book not found with id 123"
+    "status": "error",
+    "statusCode": 404,
+    "message": [
+        "Book not found with id 66794326337c184a7988b0"
+    ]
 }
