@@ -27,27 +27,25 @@ public class BookController {
 
   @PostMapping("/")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleCreateBook(@Valid @RequestBody BookRequestDTO bookRequest) {
-    Book book = service.createBook(bookRequest);
-    BookResponseDTO bookResponse = convertToBookResponseDTO(book);
+    BookResponseDTO book = service.createBook(bookRequest);
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
         .status("created")
         .statusCode(HttpStatus.CREATED.value())
         .message("Book created successfully")
-        .data(bookResponse)
+        .data(book)
         .build(), HttpStatus.CREATED);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(@Valid @RequestBody BookRequestDTO bookRequest, @PathVariable String id) {
-    Book book = service.updateBook(id, bookRequest);
-    BookResponseDTO bookResponse = convertToBookResponseDTO(book);
+    BookResponseDTO book = service.updateBook(id, bookRequest);
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
         .status("updated")
         .statusCode(HttpStatus.OK.value())
         .message("Book updated successfully")
-        .data(bookResponse)
+        .data(book)
         .build(), HttpStatus.OK);
   }
 
@@ -65,14 +63,13 @@ public class BookController {
 
   @GetMapping("/{id}")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleGetBook(@PathVariable String id) {
-    Book book = service.getBook(id);
-    BookResponseDTO bookResponse = convertToBookResponseDTO(book);
+    BookResponseDTO book = service.getBook(id);
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
         .status("success")
         .statusCode(HttpStatus.OK.value())
         .message("Book retrieved successfully")
-        .data(bookResponse)
+        .data(book)
         .build(), HttpStatus.OK);
   }
 
@@ -144,7 +141,7 @@ public class BookController {
         .build(), HttpStatus.OK);
   }
 
-  private BookResponseDTO convertToBookResponseDTO(Book book) {
+  private BookResponseDTO convertToBookResponseDTO( Book book) {
     return BookResponseDTO.builder()
         .id(book.getId())
         .title(book.getTitle())
@@ -152,6 +149,8 @@ public class BookController {
         .summary(book.getSummary())
         .publishYear(book.getPublishYear())
         .isbn(book.getIsbn())
+        .createdDate(book.getCreatedDate())
+        .lastModifiedDate(book.getLastModifiedDate())
         .build();
   }
 
