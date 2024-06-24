@@ -1,4 +1,4 @@
-package com.demo.bookstoreapp.repository;
+package com.demo.bookstoreapp.repository.mongo;
 
 import com.demo.bookstoreapp.model.Book;
 import org.springframework.data.domain.Page;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface BookRepository extends MongoRepository< Book, String> {
+public interface MongoBookRepository extends MongoRepository< Book, String> {
 
   Optional<Book> findByIsbn( String isbn );
   Optional< Page<Book> > findByTitleContainingIgnoreCase( String title, Pageable pageable );

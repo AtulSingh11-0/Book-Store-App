@@ -1,13 +1,15 @@
 package com.demo.bookstoreapp.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 @Data
 @Builder
@@ -27,14 +29,19 @@ public class Book {
   @Size(min = 1, max = 30, message = "Author name must be between 1 and 30 characters")
   private String author;
 
-  @Size(min = 1, max = 1000, message = "Summary must be between 1 and 100 characters")
+  @Size(min = 50, max = 1000, message = "Summary must be between 50 and 1000 characters")
   private String summary;
 
-  @NotBlank(message = "Publish Year is required")
+  @NotNull (message = "Publish year is required")
   private int publishYear;
 
   @NotBlank(message = "ISBN is required")
-  @Size(min = 1, max = 13, message = "ISBN must be between 1 and 13 characters")
+  @Size(min = 10, max = 13, message = "ISBN must be between 10 and 13 characters")
   private String isbn;
 
+  @CreatedDate
+  private Date createdDate;
+
+  @LastModifiedDate
+  private Date lastModifiedDate;
 }
