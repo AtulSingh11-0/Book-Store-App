@@ -1,5 +1,6 @@
 package com.demo.bookstoreapp.response;
 
+import com.demo.bookstoreapp.model.Image;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class BookResponseDTO {
   private String summary;
   private int publishYear;
   private String isbn;
+  private ImageDTO image;
   private Date createdDate;
   private Date lastModifiedDate;
 

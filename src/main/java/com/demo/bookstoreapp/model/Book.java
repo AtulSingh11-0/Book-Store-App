@@ -7,6 +7,7 @@ import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -39,9 +40,13 @@ public class Book {
   @Size(min = 10, max = 13, message = "ISBN must be between 10 and 13 characters")
   private String isbn;
 
+  @DBRef
+  private Image image;
+
   @CreatedDate
   private Date createdDate;
 
   @LastModifiedDate
   private Date lastModifiedDate;
+
 }
