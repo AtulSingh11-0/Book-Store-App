@@ -1,18 +1,24 @@
 package com.demo.bookstoreapp.controller;
 
+import com.demo.bookstoreapp.exception.ImageNotSavedException;
 import com.demo.bookstoreapp.model.Book;
+import com.demo.bookstoreapp.model.Image;
 import com.demo.bookstoreapp.request.BookRequestDTO;
 import com.demo.bookstoreapp.response.ApiResponseDTO;
 import com.demo.bookstoreapp.response.BookResponseDTO;
+import com.demo.bookstoreapp.response.ImageDTO;
 import com.demo.bookstoreapp.response.PaginationResponseDTO;
 import com.demo.bookstoreapp.service.BookService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,12 +28,20 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/books")
 public class BookController {
 
+  private static final Logger log = LoggerFactory.getLogger(BookController.class);
   @Autowired
   private BookService service;
 
-  @PostMapping("/")
-  public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleCreateBook(@Valid @RequestBody BookRequestDTO bookRequest) {
-    BookResponseDTO book = service.createBook(bookRequest);
+  @PostMapping(
+      value = "/",
+      consumes = "multipart/form-data"
+  )
+  public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleCreateBook(
+      @Valid @ModelAttribute BookRequestDTO bookRequest,
+      @RequestParam("image") MultipartFile image) throws ImageNotSavedException {
+
+    BookResponseDTO book = service.createBook(bookRequest, image);
+    log.debug(String.valueOf(book));
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
         .status("created")
@@ -38,8 +52,12 @@ public class BookController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(@Valid @RequestBody BookRequestDTO bookRequest, @PathVariable String id) {
-    BookResponseDTO book = service.updateBook(id, bookRequest);
+  public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(
+      @PathVariable String id,
+      @RequestPart(name = "book") @Valid BookRequestDTO bookRequest,
+      @RequestPart(name = "image")MultipartFile image ) throws ImageNotSavedException {
+
+    BookResponseDTO book = service.updateBook(id, bookRequest, image);
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
         .status("updated")
@@ -64,6 +82,7 @@ public class BookController {
   @GetMapping("/{id}")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleGetBook(@PathVariable String id) {
     BookResponseDTO book = service.getBook(id);
+    log.debug(String.valueOf(book));
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
         .status("success")
@@ -149,6 +168,7 @@ public class BookController {
         .summary(book.getSummary())
         .publishYear(book.getPublishYear())
         .isbn(book.getIsbn())
+        .image(buildImageDTO(book.getImage()))
         .createdDate(book.getCreatedDate())
         .lastModifiedDate(book.getLastModifiedDate())
         .build();
@@ -166,5 +186,16 @@ public class BookController {
         .sortBy(sortBy)
         .order(order)
         .build();
+  }
+
+  private ImageDTO buildImageDTO (Image image) {
+    ImageDTO imageDTO = ImageDTO.builder()
+        .id(image.getId())
+        .name(image.getName())
+        .type(image.getType())
+        .data(image.getData())
+        .build();
+    log.debug(String.valueOf(imageDTO));
+    return imageDTO;
   }
 }
