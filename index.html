@@ -17,7 +17,7 @@
     <script>
         // Function to fetch book by ID
         async function fetchBookById() {
-            const bookId = '667ae9ff242bd8684fcc692'; // Replace with your actual book ID
+            const bookId = '667be11ad608bd246873c836'; // Replace with your actual book ID
             const apiUrl = `http://localhost:6969/api/v1/books/${bookId}`; // Replace with your actual API endpoint
 
             try {
@@ -28,14 +28,14 @@
                 console.log(responseData);
 
                 // Extract image data from the response
-                const imageData = responseData.data.image.data;
+                const imageData = responseData.data.image.url;
                 console.log(imageData);
 
                 // Create a new image element
                 const imgElement = document.createElement('img');
 
-                // Set the source of the image to the base64-encoded image data
-                imgElement.src = `data:${responseData.data.image.type};base64, ${imageData}`;
+                // Set the image source to the image cloudinary URL
+                imgElement.src = imageData;
 
                 // Clear existing image if any
                 document.getElementById('imageContainer').innerHTML = '';

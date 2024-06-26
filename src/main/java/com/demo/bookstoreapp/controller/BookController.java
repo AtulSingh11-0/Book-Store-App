@@ -10,8 +10,7 @@ import com.demo.bookstoreapp.response.ImageDTO;
 import com.demo.bookstoreapp.response.PaginationResponseDTO;
 import com.demo.bookstoreapp.service.BookService;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -23,12 +22,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Validated
 @RestController
 @RequestMapping("/api/v1/books")
 public class BookController {
 
-  private static final Logger log = LoggerFactory.getLogger(BookController.class);
   @Autowired
   private BookService service;
 
@@ -191,9 +190,10 @@ public class BookController {
   private ImageDTO buildImageDTO (Image image) {
     ImageDTO imageDTO = ImageDTO.builder()
         .id(image.getId())
-        .name(image.getName())
-        .type(image.getType())
-        .data(image.getData())
+        .publicId(image.getPublicId())
+        .url(image.getUrl())
+        .createdDate(image.getCreatedDate())
+        .lastModifiedDate(image.getLastModifiedDate())
         .build();
     log.debug(String.valueOf(imageDTO));
     return imageDTO;

@@ -2,7 +2,6 @@ package com.demo.bookstoreapp.service.impl;
 
 import com.demo.bookstoreapp.exception.BookWithIdNotFoundException;
 import com.demo.bookstoreapp.exception.BookWithIsbnAlreadyExistsException;
-import com.demo.bookstoreapp.exception.ImageNotSavedException;
 import com.demo.bookstoreapp.model.Book;
 import com.demo.bookstoreapp.model.Image;
 import com.demo.bookstoreapp.repository.BookRepository;
@@ -11,6 +10,7 @@ import com.demo.bookstoreapp.request.BookRequestDTO;
 import com.demo.bookstoreapp.response.BookResponseDTO;
 import com.demo.bookstoreapp.response.ImageDTO;
 import com.demo.bookstoreapp.service.BookService;
+import com.demo.bookstoreapp.service.CloudinaryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.Optional;
 
 @Slf4j
@@ -32,21 +31,16 @@ public class BookServiceImpl implements BookService {
   private BookRepository repository;
   @Autowired
   private ImageRepository imageRepository;
+  @Autowired
+  private CloudinaryService cloudinaryService;
 
   @Override
   public BookResponseDTO createBook(
       BookRequestDTO bookRequest,
       MultipartFile image
-  ) throws ImageNotSavedException {
+  ) {
     checkIsbnExists(bookRequest.getIsbn(), false);
-
-    Image savedImage;
-    try {
-      savedImage = saveImage(image);
-    } catch ( ImageNotSavedException e ) {
-      log.error("Error saving image file for book with ISBN {}", bookRequest.getIsbn(), e);
-      throw new ImageNotSavedException(e.getMessage());
-    }
+    Image savedImage = saveImage(image);
 
     Book newBook = buildBook(bookRequest);
     newBook.setImage(savedImage);
@@ -61,17 +55,11 @@ public class BookServiceImpl implements BookService {
       String id,
       BookRequestDTO bookRequest,
       MultipartFile image
-  ) throws ImageNotSavedException {
+  ) {
     checkBookExistsById(id);
     checkIsbnExists(bookRequest.getIsbn(), true);
 
-    Image savedImage;
-    try {
-      savedImage = saveImage(image);
-    } catch ( ImageNotSavedException e ) {
-      log.error("Error saving image file for book with ID {}", id, e);
-      throw new ImageNotSavedException(e.getMessage());
-    }
+    Image savedImage = saveImage(image);
 
     Book updatedBook = buildBook(id, bookRequest);
     updatedBook.setImage(savedImage);
@@ -84,6 +72,10 @@ public class BookServiceImpl implements BookService {
   @Override
   public void deleteBook(String id) {
     checkBookExistsById(id);
+    repository.findById(id).ifPresent(book -> {
+      cloudinaryService.deleteImage(book.getImage().getPublicId());
+      imageRepository.deleteById(book.getImage().getId());
+    });
     repository.deleteById(id);
     log.info("Book with ID {} deleted successfully", id);
   }
@@ -191,24 +183,16 @@ public class BookServiceImpl implements BookService {
   private ImageDTO convertToImageDTO (Image image) {
     return ImageDTO.builder()
         .id(image.getId())
-        .name(image.getName())
-        .type(image.getType())
-        .data(image.getData())
+        .publicId(image.getPublicId())
+        .url(image.getUrl())
+        .createdDate(image.getCreatedDate())
+        .lastModifiedDate(image.getLastModifiedDate())
         .build();
   }
 
-  private Image saveImage ( MultipartFile image ) throws ImageNotSavedException {
-    try {
-      Image savedImage = Image.builder()
-          .name(image.getOriginalFilename())
-          .type(image.getContentType())
-          .data(image.getBytes())
-          .build();
-      return imageRepository.save(savedImage);
-    } catch ( IOException e ) {
-      log.error("Error saving image with name {}", image.getOriginalFilename());
-      throw new ImageNotSavedException(e.getMessage());
-    }
+  private Image saveImage ( MultipartFile image ) {
+    Image uploadedImage = cloudinaryService.uploadImage(image);
+    return imageRepository.save(uploadedImage);
   }
 
 }
