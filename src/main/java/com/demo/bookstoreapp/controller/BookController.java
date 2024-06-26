@@ -53,12 +53,15 @@ public class BookController {
         .build(), HttpStatus.CREATED);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping(
+      value = "/{id}",
+      consumes = "multipart/form-data"
+  )
   @Operation(summary = "Update a book")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(
       @PathVariable String id,
-      @RequestPart(name = "book") @Valid BookRequestDTO bookRequest,
-      @RequestPart(name = "image")MultipartFile image ) {
+      @Valid @ModelAttribute BookRequestDTO bookRequest,
+      @RequestParam(name = "image")MultipartFile image ) {
 
     BookResponseDTO book = service.updateBook(id, bookRequest, image);
 
