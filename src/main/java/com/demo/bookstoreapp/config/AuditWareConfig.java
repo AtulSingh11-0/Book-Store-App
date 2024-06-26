@@ -4,7 +4,7 @@ import org.springframework.data.domain.AuditorAware;
 
 import java.util.Optional;
 
-public class AuditWareImpl implements AuditorAware<String> {
+public class AuditWareConfig implements AuditorAware<String> {
 
   // Returning empty instead of user since we're tracking just dates not users
   @Override
