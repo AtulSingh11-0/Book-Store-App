@@ -26,7 +26,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
   @Override
   public Image uploadImage ( MultipartFile image ) {
     try {
-      Map result = cloudinary.uploader().upload(image.getBytes(), Map.of(
+      var result = cloudinary.uploader().upload(image.getBytes(), Map.of(
           "public_id", generateFileName(image.getOriginalFilename()),
           "folder", "bookstoreapp",
           "use_filename", true,
