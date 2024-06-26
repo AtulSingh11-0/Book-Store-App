@@ -1,6 +1,5 @@
 package com.demo.bookstoreapp.controller;
 
-import com.demo.bookstoreapp.exception.ImageNotSavedException;
 import com.demo.bookstoreapp.model.Book;
 import com.demo.bookstoreapp.model.Image;
 import com.demo.bookstoreapp.request.BookRequestDTO;
@@ -37,7 +36,7 @@ public class BookController {
   )
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleCreateBook(
       @Valid @ModelAttribute BookRequestDTO bookRequest,
-      @RequestParam("image") MultipartFile image) throws ImageNotSavedException {
+      @RequestParam("image") MultipartFile image) {
 
     BookResponseDTO book = service.createBook(bookRequest, image);
     log.debug(String.valueOf(book));
@@ -54,7 +53,7 @@ public class BookController {
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(
       @PathVariable String id,
       @RequestPart(name = "book") @Valid BookRequestDTO bookRequest,
-      @RequestPart(name = "image")MultipartFile image ) throws ImageNotSavedException {
+      @RequestPart(name = "image")MultipartFile image ) {
 
     BookResponseDTO book = service.updateBook(id, bookRequest, image);
 

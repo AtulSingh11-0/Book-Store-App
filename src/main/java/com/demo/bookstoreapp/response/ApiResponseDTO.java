@@ -3,7 +3,6 @@ package com.demo.bookstoreapp.response;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
 @Data
 @Builder
