@@ -12,6 +12,7 @@ A Spring Boot application for managing a bookstore. The application allows for t
 - [API Endpoints](#api-endpoints)
 - [Example Responses](#example-responses)
 - [Exception Handling](#exception-handling)
+- [Swagger Documentation](#swagger-documentation)
 
 ## Overview
 
@@ -64,6 +65,8 @@ This application is built using Spring Boot and MongoDB. It provides a RESTful A
     ```sh
     mvn spring-boot:run
     ```
+
+5. Access the API documentation: [Swagger UI](http://localhost:6969/swagger-ui.html)
 
 ## Usage
 
@@ -225,3 +228,11 @@ Example of an error response:
         "Book not found with id 66794326337c184a7988b0"
     ]
 }
+
+## Swagger Documentation
+
+Explore the API using Swagger UI:
+
+- **Swagger UI URL:** [http://localhost:6969/swagger-ui.html](http://localhost:6969/swagger-ui.html)
+
+Swagger UI provides a graphical interface for exploring the endpoints, making it easier to understand and interact with the API.
