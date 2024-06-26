@@ -2,7 +2,6 @@ package com.demo.bookstoreapp.config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-import io.github.cdimascio.dotenv.Dotenv;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,12 +10,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CloudinaryConfig {
 
-  Dotenv dotenv = Dotenv.load();
-
-  private final String CLOUDINARY_URL = dotenv.get("CLOUDINARY_URL");
-  private final String CLOUD_NAME = dotenv.get("CLOUD_NAME");
-  private final String API_KEY = dotenv.get("API_KEY");
-  private final String API_SECRET = dotenv.get("API_SECRET");
+  private final String CLOUD_NAME = "ddfiyfatr";
+  private final String API_KEY = "318361741574497";
+  private final String API_SECRET = "EDa1y09Sq_i-bUJDHZFco7CuS2E";
 
   @Bean
   public Cloudinary cloudinary () {

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.demo</groupId>
     <artifactId>Book-Store-App</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>Book-Store-App</name>
     <description>Book-Store-App</description>
     <url/>
@@ -27,7 +27,7 @@
         <url/>
     </scm>
     <properties>
-        <java.version>21</java.version>
+        <java.version>20</java.version>
     </properties>
     <dependencies>
         <dependency>
