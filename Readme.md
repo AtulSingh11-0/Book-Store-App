@@ -46,7 +46,7 @@ This application is built using Spring Boot and MongoDB. It provides a RESTful A
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/bookstore-app.git
+    git clone https://github.com/AtulSingh11-0/Book-Store-App.git
     cd bookstore-app
     ```
 
@@ -77,7 +77,7 @@ Once the application is running, you can interact with the API using tools like 
     ```http
     POST /api/v1/books/
     ```
-    **Request Body:**
+    **Request Body (JSON):**
     ```json
     {
       "title": "Example Title",
@@ -88,11 +88,16 @@ Once the application is running, you can interact with the API using tools like 
     }
     ```
 
+    **Request Body (Form Data with File):**
+    ```
+    Key: file, Value: [select file]
+    ```
+
 - **Update a book**
     ```http
     PUT /api/v1/books/{id}
     ```
-    **Request Body:**
+    **Request Body (JSON):**
     ```json
     {
       "title": "Updated Title",
@@ -101,6 +106,11 @@ Once the application is running, you can interact with the API using tools like 
       "publishYear": 2023,
       "isbn": "1234567890123"
     }
+    ```
+
+    **Request Body (Form Data with File):**
+    ```
+    Key: file, Value: [select file]
     ```
 
 - **Delete a book**
@@ -143,21 +153,28 @@ Once the application is running, you can interact with the API using tools like 
       "statusCode": 201,
       "message": "Book created successfully",
       "data": {
-        "id": "60d5f9a0c2f4b146d4e29e3a",
-        "title": "Example Title",
-        "author": "Example Author",
-        "summary": "Example Summary",
-        "publishYear": 2023,
-        "isbn": "1234567890123",
-        "createdDate": "2024-06-24T10:21:17.068+00:00",
-        "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
+        "id": "667beadd7c1711725f248a0a",
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "summary": "A science fiction novel about an astronaut stranded on Mars and his struggle to survive.",
+        "publishYear": 2011,
+        "isbn": "978055341800",
+        "image": {
+            "id": "667beadd7c1711725f248a09",
+            "publicId": "bookstoreapp/<filename>_<date::yyyy-MM-dd>::<time::HH:mm:ss>",
+            "url": "<image_url>/bookstoreapp/<filename>_<date::yyyy-MM-dd>::<time::HH:mm:ss>.png",
+            "createdDate": "2024-06-26T10:18:05.733+00:00",
+            "lastModifiedDate": "2024-06-26T10:18:05.733+00:00"
+        },
+        "createdDate": "2024-06-26T10:18:05.751+00:00",
+        "lastModifiedDate": "2024-06-26T10:18:05.751+00:00"
       }
     }
     ```
 
 - **Get a book by ID**
     ```http
-    GET /api/v1/books/60d5f9a0c2f4b146d4e29e3a
+    GET /api/v1/books/667bdf28d608bd246873c834
     ```
     **Response Body:**
     ```json
@@ -166,97 +183,36 @@ Once the application is running, you can interact with the API using tools like 
       "statusCode": 200,
       "message": "Book retrieved successfully",
       "data": {
-        "id": "60d5f9a0c2f4b146d4e29e3a",
-        "title": "Example Title",
-        "author": "Example Author",
-        "summary": "Example Summary",
-        "publishYear": 2023,
-        "isbn": "1234567890123",
-        "createdDate": "2024-06-24T10:21:17.068+00:00",
-        "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
-      }
-    }
-    ```
-
-- **Get all books**
-    ```http
-    GET /api/v1/books?pageNo=0&pageSize=10&sortBy=id&order=asc
-    ```
-    **Response Body:**
-    ```json
-    {
-      "status": "success",
-      "statusCode": 200,
-      "message": "Books retrieved successfully",
-      "data": [
-        {
-          "id": "60d5f9a0c2f4b146d4e29e3a",
-          "title": "Example Title",
-          "author": "Example Author",
-          "summary": "Example Summary",
-          "publishYear": 2023,
-          "isbn": "1234567890123",
-          "createdDate": "2024-06-24T10:21:17.068+00:00",
-          "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
+        "id": "667bdf28d608bd246873c834",
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "summary": "A science fiction novel about an astronaut stranded on Mars and his struggle to survive.",
+        "publishYear": 2011,
+        "isbn": "978055341800",
+        "image": {
+            "id": "667bdf28d608bd246873c833",
+            "publicId": "bookstoreapp/<filename>_<date::yyyy-MM-dd>::<time::HH:mm:ss>",
+            "url": "<image_url>/bookstoreapp/<filename>_<date::yyyy-MM-dd>::<time::HH:mm:ss>.png",
+            "createdDate": "2024-06-26T09:28:08.030+00:00",
+            "lastModifiedDate": "2024-06-26T09:28:08.030+00:00"
         },
-        {
-          "id": "60d5f9a0c2f4b146d4e29e3b",
-          "title": "Another Title",
-          "author": "Another Author",
-          "summary": "Another Summary",
-          "publishYear": 2022,
-          "isbn": "9876543210987",
-          "createdDate": "2024-06-24T10:21:17.068+00:00",
-          "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
-        }
-      ],
-      "pagination": {
-        "currentPage": 0,
-        "currentItem": 2,
-        "totalPages": 1,
-        "totalItems": 2,
-        "hasNext": false,
-        "hasPrevious": false,
-        "sort": "id: ASC",
-        "sortBy": "id",
-        "order": "asc"
+        "createdDate": "2024-06-26T09:28:08.075+00:00",
+        "lastModifiedDate": "2024-06-26T09:28:08.075+00:00"
       }
     }
     ```
 
-- **Search books by title**
+- **Delete a book by ID**
     ```http
-    GET /api/v1/books/search-by-title?title=example&pageNo=0&pageSize=10&sortBy=id&order=asc
+    DELETE /api/v1/books/667bdf28d608bd246873c834
     ```
     **Response Body:**
     ```json
     {
-      "status": "success",
+      "status": "deleted",
       "statusCode": 200,
-      "message": "Books retrieved successfully",
-      "data": [
-        {
-          "id": "60d5f9a0c2f4b146d4e29e3a",
-          "title": "Example Title",
-          "author": "Example Author",
-          "summary": "Example Summary",
-          "publishYear": 2023,
-          "isbn": "1234567890123",
-          "createdDate": "2024-06-24T10:21:17.068+00:00",
-          "lastModifiedDate": "2024-06-24T10:21:17.068+00:00"
-        }
-      ],
-      "pagination": {
-        "currentPage": 0,
-        "currentItem": 1,
-        "totalPages": 1,
-        "totalItems": 1,
-        "hasNext": false,
-        "hasPrevious": false,
-        "sort": "id: ASC",
-        "sortBy": "id",
-        "order": "asc"
-      }
+      "message": "Book deleted successfully",
+      "data": true
     }
     ```
 

@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
@@ -88,6 +89,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Page<Book> getBooksByTitle(
       String title,
       int pageNo,
@@ -99,6 +101,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Page<Book> getBooksByIsbn(
       String isbn,
       int pageNo,
@@ -110,6 +113,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public Page<Book> getAllBooks(
       int pageNo,
       int pageSize,
