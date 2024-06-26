@@ -77,40 +77,32 @@ Once the application is running, you can interact with the API using tools like 
     ```http
     POST /api/v1/books/
     ```
-    **Request Body (JSON):**
-    ```json
-    {
-      "title": "Example Title",
-      "author": "Example Author",
-      "summary": "Example Summary",
-      "publishYear": 2023,
-      "isbn": "1234567890123"
-    }
-    ```
+    **Request Body (form-data):**
+    ```form-data
+      Content-Type: multipart/form-data
 
-    **Request Body (Form Data with File):**
-    ```
-    Key: file, Value: [select file]
+      title: Example Title
+      author: Example Author
+      summary: Example Summary
+      publishYear: 2023
+      isbn: 1234567890123
+      image: [Upload your image file here]
     ```
 
 - **Update a book**
     ```http
     PUT /api/v1/books/{id}
     ```
-    **Request Body (JSON):**
-    ```json
-    {
-      "title": "Updated Title",
-      "author": "Updated Author",
-      "summary": "Updated Summary",
-      "publishYear": 2023,
-      "isbn": "1234567890123"
-    }
-    ```
+    **Request Body (form-data):**
+    ```form-data
+      Content-Type: multipart/form-data
 
-    **Request Body (Form Data with File):**
-    ```
-    Key: file, Value: [select file]
+      title: Example Title
+      author: Example Author
+      summary: Example Summary
+      publishYear: 2023
+      isbn: 1234567890123
+      image: [Upload your image file here]
     ```
 
 - **Delete a book**
