@@ -8,6 +8,8 @@ import com.demo.bookstoreapp.response.BookResponseDTO;
 import com.demo.bookstoreapp.response.ImageDTO;
 import com.demo.bookstoreapp.response.PaginationResponseDTO;
 import com.demo.bookstoreapp.service.BookService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
 @Validated
 @RestController
 @RequestMapping("/api/v1/books")
+@Tag(name = "Book Store API", description = "APIs related to Book operations")
 public class BookController {
 
   @Autowired
@@ -34,6 +37,7 @@ public class BookController {
       value = "/",
       consumes = "multipart/form-data"
   )
+  @Operation(summary = "Create a book")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleCreateBook(
       @Valid @ModelAttribute BookRequestDTO bookRequest,
       @RequestParam("image") MultipartFile image) {
@@ -50,6 +54,7 @@ public class BookController {
   }
 
   @PutMapping("/{id}")
+  @Operation(summary = "Update a book")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(
       @PathVariable String id,
       @RequestPart(name = "book") @Valid BookRequestDTO bookRequest,
@@ -66,6 +71,7 @@ public class BookController {
   }
 
   @DeleteMapping("/{id}")
+  @Operation(summary = "Delete a book")
   public ResponseEntity<ApiResponseDTO<Boolean>> handleDeleteBook(@PathVariable String id) {
     service.deleteBook(id);
 
@@ -78,6 +84,7 @@ public class BookController {
   }
 
   @GetMapping("/{id}")
+  @Operation(summary = "Get a book by ID")
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleGetBook(@PathVariable String id) {
     BookResponseDTO book = service.getBook(id);
     log.debug(String.valueOf(book));
@@ -91,6 +98,7 @@ public class BookController {
   }
 
   @GetMapping("/search-by-title")
+  @Operation(summary = "Get books by title")
   public ResponseEntity<ApiResponseDTO<List<BookResponseDTO>>> handleGetBooksByTitle(
       @RequestParam String title,
       @RequestParam(defaultValue = "0") int pageNo,
@@ -113,7 +121,9 @@ public class BookController {
         .build(), HttpStatus.OK);
   }
 
+
   @GetMapping("/search-by-isbn")
+  @Operation(summary = "Get books by ISBN")
   public ResponseEntity<ApiResponseDTO<List<BookResponseDTO>>> handleGetBooksByIsbn(
       @RequestParam String isbn,
       @RequestParam(defaultValue = "0") int pageNo,
@@ -137,6 +147,7 @@ public class BookController {
   }
 
   @GetMapping("")
+  @Operation(summary = "Get all books")
   public ResponseEntity<ApiResponseDTO<List<BookResponseDTO>>> handleGetAllBooks(
       @RequestParam(defaultValue = "0") int pageNo,
       @RequestParam(defaultValue = "10") int pageSize,
