@@ -228,6 +228,7 @@ Example of an error response:
         "Book not found with id 66794326337c184a7988b0"
     ]
 }
+```
 
 ## Swagger Documentation
 
