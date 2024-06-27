@@ -348,6 +348,356 @@
     "summary": "A science fiction novel about an astronaut stranded on Mars and his struggle to survive.",
     "publishYear": 2011,
     "isbn": "9780553418026"
+  },
+  {
+    "title": "The Night Circus",
+    "author": "Erin Morgenstern",
+    "summary": "A fantastical tale of a magical competition between two young illusionists.",
+    "publishYear": 2011,
+    "isbn": "9780385534635"
+  },
+  {
+    "title": "Life of Pi",
+    "author": "Yann Martel",
+    "summary": "A young boy survives a shipwreck and shares a lifeboat with a Bengal tiger.",
+    "publishYear": 2001,
+    "isbn": "9780156027328"
+  },
+  {
+    "title": "Beloved",
+    "author": "Toni Morrison",
+    "summary": "A haunting story of a runaway slave and the spirit of her deceased daughter.",
+    "publishYear": 1987,
+    "isbn": "9781400033416"
+  },
+  {
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "summary": "A psychological thriller about a woman who witnesses something shocking from a train.",
+    "publishYear": 2015,
+    "isbn": "9781594634024"
+  },
+  {
+    "title": "Me Before You",
+    "author": "Jojo Moyes",
+    "summary": "A love story between a young woman and a man who is paralyzed from the neck down.",
+    "publishYear": 2012,
+    "isbn": "9780143124542"
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "summary": "A symbologist uncovers secrets of the Church while investigating a murder at the Louvre.",
+    "publishYear": 2003,
+    "isbn": "9780385504201"
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "summary": "A dystopian novel about a televised fight to the death among teenagers.",
+    "publishYear": 2008,
+    "isbn": "9780439023481"
+  },
+  {
+    "title": "Water for Elephants",
+    "author": "Sara Gruen",
+    "summary": "A young man joins a traveling circus during the Great Depression.",
+    "publishYear": 2006,
+    "isbn": "9781565125605"
+  },
+  {
+    "title": "Big Little Lies",
+    "author": "Liane Moriarty",
+    "summary": "A novel about the dangerous little lies that can turn lethal.",
+    "publishYear": 2014,
+    "isbn": "9780399167065"
+  },
+  {
+    "title": "Where the Crawdads Sing",
+    "author": "Delia Owens",
+    "summary": "A novel about a young girl raised in the marshes of the South and her involvement in a murder investigation.",
+    "publishYear": 2018,
+    "isbn": "9780735219090"
+  },
+  {
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "summary": "A psychological thriller about a man whose wife goes missing on their fifth anniversary.",
+    "publishYear": 2012,
+    "isbn": "9780307588368"
+  },
+  {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "summary": "A memoir about a woman who grows up in a strict and abusive household in rural Idaho and eventually escapes to learn about the wider world through education.",
+    "publishYear": 2018,
+    "isbn": "9780399590504"
+  },
+  {
+    "title": "The Silent Patient",
+    "author": "Alex Michaelides",
+    "summary": "A psychological thriller about a woman who stops speaking after shooting her husband.",
+    "publishYear": 2019,
+    "isbn": "9781250301697"
+  },
+  {
+    "title": "The Light We Lost",
+    "author": "Jill Santopolo",
+    "summary": "A love story about two people who meet on 9/11 and their paths diverge and converge over the years.",
+    "publishYear": 2017,
+    "isbn": "9780735212756"
+  },
+  {
+    "title": "The Immortalists",
+    "author": "Chloe Benjamin",
+    "summary": "A novel about four siblings who learn the dates of their deaths and how this knowledge shapes their lives.",
+    "publishYear": 2018,
+    "isbn": "9780735213180"
+  },
+  {
+    "title": "The Light Between Oceans",
+    "author": "M.L. Stedman",
+    "summary": "A novel about a lighthouse keeper and his wife who find a baby adrift in a rowboat.",
+    "publishYear": 2012,
+    "isbn": "9781451681734"
+  },
+  {
+    "title": "Before We Were Strangers",
+    "author": "Renée Carlino",
+    "summary": "A love story about two people who reconnect after many years apart.",
+    "publishYear": 2015,
+    "isbn": "9781501105777"
+  },
+  {
+    "title": "Circe",
+    "author": "Madeline Miller",
+    "summary": "A retelling of the myth of Circe, a powerful witch from Homer's Odyssey.",
+    "publishYear": 2018,
+    "isbn": "9780316556347"
+  },
+  {
+    "title": "The Underground Railroad",
+    "author": "Colson Whitehead",
+    "summary": "A historical novel about a young slave's bid for freedom using a literal underground railroad.",
+    "publishYear": 2016,
+    "isbn": "9780385542364"
+  },
+  {
+    "title": "Little Fires Everywhere",
+    "author": "Celeste Ng",
+    "summary": "A novel about two families in suburban Ohio and the secrets they keep.",
+    "publishYear": 2017,
+    "isbn": "9780735224292"
+  },
+  {
+    "title": "Room",
+    "author": "Emma Donoghue",
+    "summary": "A novel about a young boy and his mother held captive in a small room.",
+    "publishYear": 2010,
+    "isbn": "9780316098335"
+  },
+  {
+    "title": "The Nightingale",
+    "author": "Kristin Hannah",
+    "summary": "A novel about two sisters in Nazi-occupied France and their struggle to survive and resist the occupation.",
+    "publishYear": 2015,
+    "isbn": "9780312577223"
+  },
+  {
+    "title": "The Tattooist of Auschwitz",
+    "author": "Heather Morris",
+    "summary": "A novel based on the true story of a Jewish man who falls in love with a fellow prisoner at Auschwitz.",
+    "publishYear": 2018,
+    "isbn": "9780062797155"
+  },
+  {
+    "title": "The Alice Network",
+    "author": "Kate Quinn",
+    "summary": "A historical novel about two women, a female spy recruited to the real-life Alice Network in World War I and an American socialite searching for her cousin in 1947.",
+    "publishYear": 2017,
+    "isbn": "9780062654199"
+  },
+  {
+    "title": "The Secret Keeper",
+    "author": "Kate Morton",
+    "summary": "A novel about a woman who uncovers her mother's secret past.",
+    "publishYear": 2012,
+    "isbn": "9781439152805"
+  },
+  {
+    "title": "The Goldfinch",
+    "author": "Donna Tartt",
+    "summary": "A novel about a boy whose life is upended after surviving a terrorist bombing.",
+    "publishYear": 2013,
+    "isbn": "9780316055444"
+  },
+  {
+    "title": "A Man Called Ove",
+    "author": "Fredrik Backman",
+    "summary": "A novel about a curmudgeonly old man whose life is changed by his new neighbors.",
+    "publishYear": 2012,
+    "isbn": "9781476738017"
+  },
+  {
+    "title": "The Rosie Project",
+    "author": "Graeme Simsion",
+    "summary": "A romantic comedy about a genetics professor with Asperger's syndrome who creates a questionnaire to find the perfect wife.",
+    "publishYear": 2013,
+    "isbn": "9781476729091"
+  },
+  {
+    "title": "The Orphan's Tale",
+    "author": "Pam Jenoff",
+    "summary": "A novel about a young woman who joins a traveling circus to escape the Nazis.",
+    "publishYear": 2017,
+    "isbn": "9780778319818"
+  },
+  {
+    "title": "The Silent Corner",
+    "author": "Dean Koontz",
+    "summary": "A thriller about a woman investigating the mysterious death of her husband.",
+    "publishYear": 2017,
+    "isbn": "9780345545992"
+  },
+  {
+    "title": "The Handmaid's Tale",
+    "author": "Margaret Atwood",
+    "summary": "A dystopian novel about a totalitarian society where women are subjugated.",
+    "publishYear": 1985,
+    "isbn": "9780385490810"
+  },
+  {
+    "title": "An American Marriage",
+    "author": "Tayari Jones",
+    "summary": "A novel about a newlywed couple whose lives are torn apart by a wrongful incarceration.",
+    "publishYear": 2018,
+    "isbn": "9781616208776"
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "summary": "A novel about a young girl in Nazi Germany who steals books and shares them with others.",
+    "publishYear": 2005,
+    "isbn": "9780375842200"
+  },
+  {
+    "title": "The Great Alone",
+    "author": "Kristin Hannah",
+    "summary": "A novel about a family who moves to Alaska to start a new life.",
+    "publishYear": 2018,
+    "isbn": "9780312577230"
+  },
+  {
+    "title": "The Kite Runner",
+    "author": "Khaled Hosseini",
+    "summary": "A novel about a young boy in Afghanistan and the bond he shares with his friend.",
+    "publishYear": 2003,
+    "isbn": "9781594631931"
+  },
+  {
+    "title": "The Glass Castle",
+    "author": "Jeannette Walls",
+    "summary": "A memoir about a young girl growing up in a dysfunctional family.",
+    "publishYear": 2005,
+    "isbn": "9780743247542"
+  },
+  {
+    "title": "The Trial",
+    "author": "Franz Kafka",
+    "summary": "A novel exploring themes of bureaucracy, alienation, and existentialism through the story of Josef K., who is arrested and prosecuted by an inaccessible authority.",
+    "publishYear": 1925,
+    "isbn": "9780805209990"
+  },
+  {
+    "title": "Crazy Rich Asians",
+    "author": "Kevin Kwan",
+    "summary": "At its core, Crazy Rich Asians is a love story. It chronicles the journey of Rachel and Nick as they navigate the challenges posed by their differing backgrounds and the disapproval of Nick's family.",
+    "publishYear": 2013,
+    "isbn": "9780345803788"
+  },
+  {
+    "title": "The Help",
+    "author": "Kathryn Stockett",
+    "summary": "A novel about African American maids working in white households in 1960s Mississippi.",
+    "publishYear": 2009,
+    "isbn": "9780399155345"
+  },
+  {
+    "title": "The Fault in Our Stars",
+    "author": "John Green",
+    "summary": "A story about two teenagers who fall in love after meeting at a cancer support group.",
+    "publishYear": 2012,
+    "isbn": "9780525478812"
+  },
+  {
+    "title": "Atonement",
+    "author": "Ian McEwan",
+    "summary": "A novel about a young girl's lie that changes lives during World War II.",
+    "publishYear": 2001,
+    "isbn": "9780385503952"
+  },
+  {
+    "title": "The Architect's Dream",
+    "author": "Omar",
+    "summary": "A visionary architect designs a city that defies the laws of physics and reality.",
+    "publishYear": 2023,
+    "isbn": "9781982114147"
+  },
+  {
+    "title": "Echoes of Eternity",
+    "author": "Omar",
+    "summary": "A tale of star-crossed lovers separated by centuries and connected by a mysterious artifact.",
+    "publishYear": 2018,
+    "isbn": "9781947856234"
+  },
+  {
+    "title": "Whispers in the Wind",
+    "author": "Omar",
+    "summary": "A collection of short stories that explore the unseen forces shaping our lives.",
+    "publishYear": 2020,
+    "isbn": "9781974308123"
+  },
+  {
+    "title": "The Odyssey",
+    "author": "Homer",
+    "summary": "The epic tale of Odysseus' journey home after the Trojan War, encountering gods, monsters, and temptations.",
+    "publishYear": -800,
+    "isbn": "9780140268867"
+  },
+  {
+    "title": "The Iliad",
+    "author": "Homer",
+    "summary": "The story of the Trojan War and the rage of Achilles, with its heroes, battles, and tragic consequences.",
+    "publishYear": -750,
+    "isbn": "9780140445923"
+  },
+  {
+    "title": "Hymns of Homer",
+    "author": "Homer",
+    "summary": "A collection of hymns honoring gods and heroes, capturing the essence of ancient Greek religious beliefs.",
+    "publishYear": -700,
+    "isbn": "9780199540258"
+  },
+  {
+    "title": "Harry Potter and the Goblet of Fire",
+    "author": "J.K. Rowling",
+    "summary": "Harry Potter's fourth year at Hogwarts brings forth the Triwizard Tournament, dangerous challenges, and dark mysteries.",
+    "publishYear": 2000,
+    "isbn": "9780439139601"
+  },
+  {
+    "title": "Fantastic Beasts and Where to Find Them",
+    "author": "J.K. Rowling",
+    "summary": "A compendium of magical creatures and their habitats, part of the Hogwarts School of Witchcraft and Wizardry library.",
+    "publishYear": 2001,
+    "isbn": "9780747554660"
+  },
+  {
+    "title": "The Tales of Beedle the Bard",
+    "author": "J.K. Rowling",
+    "summary": "A collection of wizarding fairy tales, including 'The Tale of the Three Brothers,' known from 'Harry Potter and the Deathly Hallows.'",
+    "publishYear": 2008,
+    "isbn": "9780545128285"
   }
 ]
 
