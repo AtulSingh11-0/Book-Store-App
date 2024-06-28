@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "ecfe7c61-04e9-44fb-9ba4-5c4de3ff947e",
+		"name": "Book Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28658772"
+	},
+	"item": [
+		{
+			"name": "hit API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hosted_url}}",
+					"host": [
+						"{{hosted_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Crazy Rich Asians",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Kevin Kwan",
+							"type": "text"
+						},
+						{
+							"key": "summary",
+							"value": "At its core, Crazy Rich Asians is a love story. It chronicles the journey of Rachel and Nick as they navigate the challenges posed by their differing backgrounds and the disapproval of Nick's family.",
+							"type": "text"
+						},
+						{
+							"key": "publishYear",
+							"value": "2013",
+							"type": "text"
+						},
+						{
+							"key": "isbn",
+							"value": "9780345803788",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "postman-cloud:///1ef349d2-1498-41b0-b77b-44ae8ba2d5a6"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://book-store-app-8ngn.onrender.com/api/v1/books/",
+					"protocol": "https",
+					"host": [
+						"book-store-app-8ngn",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{book_global}}?pageNo=4&pageSize=10",
+					"host": [
+						"{{book_global}}"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "4"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Book by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{book_local}}/667c3d162bf2095741cb478e",
+					"host": [
+						"{{book_local}}"
+					],
+					"path": [
+						"667c3d162bf2095741cb478e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Book by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "To Kill a Mockingbird",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Harper Lee",
+							"type": "text"
+						},
+						{
+							"key": "summary",
+							"value": "A novel set in the American South during the 1930s, dealing with serious issues of rape and racial inequality.",
+							"type": "text"
+						},
+						{
+							"key": "publishYear",
+							"value": "1960",
+							"type": "text"
+						},
+						{
+							"key": "isbn",
+							"value": "978006112008",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "postman-cloud:///1ef33d65-772b-4d50-8977-ba35e778d87d"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:6969/api/v1/books/667c3d162bf2095741cb478e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"667c3d162bf2095741cb478e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Book by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6969/api/v1/books/667beadd7c1711725f248a0a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"667beadd7c1711725f248a0a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Books by title",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{book_global}}/search-by-title?title=tale",
+					"host": [
+						"{{book_global}}"
+					],
+					"path": [
+						"search-by-title"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "tale"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Books by isbn",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6969/api/v1/books/search-by-isbn?isbn=978055341802",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6969",
+					"path": [
+						"api",
+						"v1",
+						"books",
+						"search-by-isbn"
+					],
+					"query": [
+						{
+							"key": "isbn",
+							"value": "978055341802"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "title",
+			"value": "{{data.title}}",
+			"type": "string"
+		},
+		{
+			"key": "author",
+			"value": "{{data.author}}",
+			"type": "string"
+		},
+		{
+			"key": "summary",
+			"value": "{{data.summary}}",
+			"type": "string"
+		},
+		{
+			"key": "publishYear",
+			"value": "{{data.publishYear}}",
+			"type": "string"
+		},
+		{
+			"key": "isbn",
+			"value": "{{data.isbn}}",
+			"type": "string"
+		},
+		{
+			"key": "local_url",
+			"value": "http://localhost:6969",
+			"type": "string"
+		},
+		{
+			"key": "hosted_url",
+			"value": "https://book-store-app-8ngn.onrender.com",
+			"type": "string"
+		},
+		{
+			"key": "book_local",
+			"value": "http://localhost:6969/api/v1/books",
+			"type": "string"
+		},
+		{
+			"key": "book_global",
+			"value": "https://book-store-app-8ngn.onrender.com/api/v1/books",
+			"type": "string"
+		}
+	]
+}
