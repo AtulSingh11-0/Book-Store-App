@@ -13,6 +13,10 @@ import com.demo.bookstoreapp.service.BookService;
 import com.demo.bookstoreapp.service.CloudinaryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +30,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@CacheConfig(cacheNames = "books")
 public class BookServiceImpl implements BookService {
 
   @Autowired
@@ -52,6 +57,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @CachePut(value = "book", key = "#id")
   public BookResponseDTO updateBook(
       String id,
       BookRequestDTO bookRequest,
@@ -71,6 +77,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @CacheEvict(value = "book", key = "#id")
   public void deleteBook(String id) {
     checkBookExistsById(id);
     repository.findById(id).ifPresent(book -> {
@@ -82,6 +89,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
+  @Cacheable(value = "book", key = "#id")
   public BookResponseDTO getBook(String id) {
     Book book = repository.findById(id)
         .orElseThrow(() -> new BookWithIdNotFoundException(id));
@@ -90,6 +98,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   @Transactional(readOnly = true)
+  @Cacheable(value = "books", key = "#title")
   public Page<Book> getBooksByTitle(
       String title,
       int pageNo,
@@ -102,6 +111,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   @Transactional(readOnly = true)
+  @Cacheable(value = "books", key = "#isbn")
   public Page<Book> getBooksByIsbn(
       String isbn,
       int pageNo,
@@ -114,6 +124,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   @Transactional(readOnly = true)
+  @Cacheable(value = "books", key = "#pageNo + #pageSize + #sortBy + #order")
   public Page<Book> getAllBooks(
       int pageNo,
       int pageSize,
