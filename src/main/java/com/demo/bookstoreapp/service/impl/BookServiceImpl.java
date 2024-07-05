@@ -67,16 +67,18 @@ public class BookServiceImpl implements BookService {
     checkBookExistsById(id);
     checkIsbnExists(bookRequest.getIsbn(), true);
 
-    Image savedImage = saveImage(image);
-
     Optional< Book > book = repository.findById(id);
     if (book.isPresent()) {
       Book existingBook = book.get();
       Book updatedBook = buildBook(id, bookRequest);
-      updatedBook.setImage(savedImage);
+      if ( image != null ) {
+        Image savedImage = saveImage(image);
+        updatedBook.setImage(savedImage);
+      }
+      updatedBook.setImage(existingBook.getImage());
       updatedBook.setCreatedDate(existingBook.getCreatedDate());
-      repository.save(updatedBook);
 
+      repository.save(updatedBook);
       log.info("Book with ID {} updated successfully", id);
       return mapToDto(updatedBook);
     } else {
