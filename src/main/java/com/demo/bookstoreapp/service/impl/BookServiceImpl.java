@@ -41,6 +41,7 @@ public class BookServiceImpl implements BookService {
   private CloudinaryService cloudinaryService;
 
   @Override
+  @CachePut(value = "book", key = "#bookRequest.isbn")
   public BookResponseDTO createBook(
       BookRequestDTO bookRequest,
       MultipartFile image
@@ -68,12 +69,19 @@ public class BookServiceImpl implements BookService {
 
     Image savedImage = saveImage(image);
 
-    Book updatedBook = buildBook(id, bookRequest);
-    updatedBook.setImage(savedImage);
-    repository.save(updatedBook);
+    Optional< Book > book = repository.findById(id);
+    if (book.isPresent()) {
+      Book existingBook = book.get();
+      Book updatedBook = buildBook(id, bookRequest);
+      updatedBook.setImage(savedImage);
+      updatedBook.setCreatedDate(existingBook.getCreatedDate());
+      repository.save(updatedBook);
 
-    log.info("Book with ID {} updated successfully", id);
-    return mapToDto(updatedBook);
+      log.info("Book with ID {} updated successfully", id);
+      return mapToDto(updatedBook);
+    } else {
+      throw new BookWithIdNotFoundException(id);
+    }
   }
 
   @Override
