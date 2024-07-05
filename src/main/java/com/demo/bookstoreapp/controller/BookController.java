@@ -87,7 +87,7 @@ public class BookController {
       @Parameter(description = "Updated book details", required = true)
       @Valid @ModelAttribute BookRequestDTO bookRequest,
       @Parameter(description = "Updated book cover image", required = true)
-      @RequestParam("image") MultipartFile image) {
+      @RequestParam(value = "image", required = false) MultipartFile image) {
 
     BookResponseDTO book = service.updateBook(id, bookRequest, image);
 
