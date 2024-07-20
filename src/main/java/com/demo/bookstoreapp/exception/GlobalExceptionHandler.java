@@ -1,9 +1,9 @@
 package com.demo.bookstoreapp.exception;
 
-import com.demo.bookstoreapp.response.ErrorResponseDTO;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import java.util.Collections;
+import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.Collections;
-import java.util.List;
+import com.demo.bookstoreapp.response.ErrorResponseDTO;
+import com.demo.bookstoreapp.utils.AppConstants;
+
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -26,7 +30,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   })
   @ApiResponse(
       responseCode = "404",
-      description = "Book not found",
+      description = AppConstants.BOOK_NOT_FOUND,
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseDTO.class))
   )
   public ResponseEntity<ErrorResponseDTO> handleBookNotFoundException(Exception e) {
@@ -40,7 +44,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   })
   @ApiResponse(
       responseCode = "409",
-      description = "Conflict - Book with ISBN already exists",
+      description = AppConstants.CONFLICT,
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseDTO.class))
   )
   public ResponseEntity<ErrorResponseDTO> handleBookAlreadyExistsException(Exception e) {
@@ -54,7 +58,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   })
   @ApiResponse(
       responseCode = "500",
-      description = "Internal Server Error",
+      description = AppConstants.INTERNAL_SERVER_ERROR,
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseDTO.class))
   )
   public ResponseEntity<ErrorResponseDTO> handleGenericException(Exception e) {
@@ -66,14 +70,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   @Override
   @ApiResponse(
       responseCode = "400",
-      description = "Bad Request",
+      description = AppConstants.BAD_REQUEST,
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponseDTO.class))
   )
   protected ResponseEntity<Object> handleMethodArgumentNotValid (
       MethodArgumentNotValidException e,
-      HttpHeaders headers,
-      HttpStatusCode statusCode,
-      WebRequest request
+      @NotNull HttpHeaders headers,
+      @NotNull HttpStatusCode statusCode,
+      @NotNull WebRequest request
   ) {
     List< String > errors = e.getBindingResult()
         .getFieldErrors()
