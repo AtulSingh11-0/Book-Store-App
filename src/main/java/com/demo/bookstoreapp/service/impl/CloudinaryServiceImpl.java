@@ -1,10 +1,12 @@
 package com.demo.bookstoreapp.service.impl;
 
 import com.cloudinary.Cloudinary;
+import com.demo.bookstoreapp.exception.ImageDeletionFailedException;
+import com.demo.bookstoreapp.exception.ImageUploadingFailedException;
 import com.demo.bookstoreapp.model.Image;
 import com.demo.bookstoreapp.service.CloudinaryService;
+import com.demo.bookstoreapp.utils.AppConstants;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,12 +18,11 @@ import java.util.Map;
 @Service
 public class CloudinaryServiceImpl implements CloudinaryService {
 
-  @Autowired
-  private Cloudinary cloudinary;
+  private final Cloudinary cloudinary;
 
-  private static final String DATE_FORMAT = "yyyy-MM-dd::HH:mm:ss";
-
-  private static final String FILE_NAME_FORMAT = "%s_%s_%s";
+  public CloudinaryServiceImpl ( Cloudinary cloudinary ) {
+    this.cloudinary = cloudinary;
+  }
 
   @Override
   public Image uploadImage ( MultipartFile image ) {
@@ -41,7 +42,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 
     } catch ( Exception e ) {
       log.error("Error uploading image to cloudinary", e);
-      throw new RuntimeException("Error uploading image");
+      throw new ImageUploadingFailedException(AppConstants.IMAGE_UPLOAD_ERROR);
     }
   }
 
@@ -53,13 +54,13 @@ public class CloudinaryServiceImpl implements CloudinaryService {
       ));
     } catch ( Exception e ) {
       log.error("Error deleting image from cloudinary", e);
-      throw new RuntimeException("Error deleting image");
+      throw new ImageDeletionFailedException(AppConstants.IMAGE_DELETE_ERROR);
     }
   }
 
   private String generateFileName ( String name) {
-    final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+    final DateFormat dateFormat = new SimpleDateFormat(AppConstants.DATE_FORMAT);
     final String date = dateFormat.format(System.currentTimeMillis());
-    return String.format(FILE_NAME_FORMAT, name, date, System.currentTimeMillis());
+    return String.format(AppConstants.FILE_NAME_FORMAT, name, date, System.currentTimeMillis());
   }
 }
