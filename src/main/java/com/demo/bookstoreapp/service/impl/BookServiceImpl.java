@@ -12,7 +12,6 @@ import com.demo.bookstoreapp.response.ImageDTO;
 import com.demo.bookstoreapp.service.BookService;
 import com.demo.bookstoreapp.service.CloudinaryService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -33,12 +32,19 @@ import java.util.Optional;
 @CacheConfig(cacheNames = "books")
 public class BookServiceImpl implements BookService {
 
-  @Autowired
-  private BookRepository repository;
-  @Autowired
-  private ImageRepository imageRepository;
-  @Autowired
-  private CloudinaryService cloudinaryService;
+  private final BookRepository repository;
+  private final ImageRepository imageRepository;
+  private final CloudinaryService cloudinaryService;
+
+  public BookServiceImpl(
+      BookRepository repository,
+      ImageRepository imageRepository,
+      CloudinaryService cloudinaryService
+  ) {
+    this.repository = repository;
+    this.imageRepository = imageRepository;
+    this.cloudinaryService = cloudinaryService;
+  }
 
   @Override
   @CachePut(value = "book", key = "#bookRequest.isbn")
@@ -108,7 +114,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   @Transactional(readOnly = true)
-  @Cacheable(value = "books", key = "#title")
+  @Cacheable(value = "books", key = "#title + #pageNo + #pageSize + #sortBy + #order")
   public Page<Book> getBooksByTitle(
       String title,
       int pageNo,
@@ -121,7 +127,7 @@ public class BookServiceImpl implements BookService {
 
   @Override
   @Transactional(readOnly = true)
-  @Cacheable(value = "books", key = "#isbn")
+  @Cacheable(value = "books", key = "#isbn + #pageNo + #pageSize + #sortBy + #order")
   public Page<Book> getBooksByIsbn(
       String isbn,
       int pageNo,
