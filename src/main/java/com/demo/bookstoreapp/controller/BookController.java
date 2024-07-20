@@ -5,6 +5,7 @@ import com.demo.bookstoreapp.model.Image;
 import com.demo.bookstoreapp.request.BookRequestDTO;
 import com.demo.bookstoreapp.response.*;
 import com.demo.bookstoreapp.service.BookService;
+import com.demo.bookstoreapp.utils.AppConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -14,7 +15,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Validated
@@ -32,8 +31,11 @@ import java.util.stream.Collectors;
 @Tag(name = "Book Store API", description = "APIs related to Book operations")
 public class BookController {
 
-  @Autowired
-  private BookService service;
+  private final BookService service;
+
+  public BookController (BookService service) {
+    this.service = service;
+  }
 
   @PostMapping(
       value = "/",
@@ -41,11 +43,11 @@ public class BookController {
   )
   @Operation(summary = "Create a book")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "201", description = "Book created successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "201", description = AppConstants.BOOK_CREATED, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "400", description = "Bad Request", content = { @Content(mediaType = "application" +
+      @ApiResponse(responseCode = "400", description = AppConstants.BAD_REQUEST, content = { @Content(mediaType = "application" +
           "/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleCreateBook(
@@ -58,9 +60,9 @@ public class BookController {
     log.debug(String.valueOf(book));
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
-        .status("created")
+        .status(AppConstants.CREATED)
         .statusCode(HttpStatus.CREATED.value())
-        .message("Book created successfully")
+        .message(AppConstants.BOOK_CREATED)
         .data(book)
         .build(), HttpStatus.CREATED);
   }
@@ -71,14 +73,14 @@ public class BookController {
   )
   @Operation(summary = "Update a book")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "200", description = "Book updated successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_UPDATED, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "400", description = "Bad Request", content = { @Content(mediaType = "application" +
+      @ApiResponse(responseCode = "400", description = AppConstants.BAD_REQUEST, content = { @Content(mediaType = "application" +
           "/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
-      @ApiResponse(responseCode = "404", description = "Book with Id Not Found", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "404", description = AppConstants.NOT_FOUND, content = { @Content(mediaType =
           "application" +
           "/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleUpdateBook(
@@ -92,9 +94,9 @@ public class BookController {
     BookResponseDTO book = service.updateBook(id, bookRequest, image);
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
-        .status("updated")
+        .status(AppConstants.UPDATED)
         .statusCode(HttpStatus.OK.value())
-        .message("Book updated successfully")
+        .message(AppConstants.BOOK_UPDATED)
         .data(book)
         .build(), HttpStatus.OK);
   }
@@ -102,12 +104,11 @@ public class BookController {
   @DeleteMapping("/{id}")
   @Operation(summary = "Delete a book")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "200", description = "Book deleted successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_DELETED, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "404", description = "Book with Id Not Found", content = { @Content(mediaType =
-          "application" +
-          "/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "404", description = AppConstants.NOT_FOUND, content = { @Content(mediaType =
+          "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<Boolean>> handleDeleteBook(
@@ -116,9 +117,9 @@ public class BookController {
     service.deleteBook(id);
 
     return new ResponseEntity<>(ApiResponseDTO.<Boolean>builder()
-        .status("deleted")
+        .status(AppConstants.DELETED)
         .statusCode(HttpStatus.OK.value())
-        .message("Book deleted successfully")
+        .message(AppConstants.BOOK_DELETED)
         .data(true)
         .build(), HttpStatus.OK);
   }
@@ -126,12 +127,12 @@ public class BookController {
   @GetMapping("/{id}")
   @Operation(summary = "Get a book by ID")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "200", description = "Book retrieved successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_FOUND, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "404", description = "Book with Id Not Found", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "404", description = AppConstants.NOT_FOUND, content = { @Content(mediaType =
           "application" +
           "/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<BookResponseDTO>> handleGetBook(
@@ -140,9 +141,9 @@ public class BookController {
     BookResponseDTO book = service.getBook(id);
 
     return new ResponseEntity<>(ApiResponseDTO.<BookResponseDTO>builder()
-        .status("success")
+        .status(AppConstants.SUCCESS)
         .statusCode(HttpStatus.OK.value())
-        .message("Book retrieved successfully")
+        .message(AppConstants.BOOK_FOUND)
         .data(book)
         .build(), HttpStatus.OK);
   }
@@ -150,11 +151,11 @@ public class BookController {
   @GetMapping("/search-by-title")
   @Operation(summary = "Get books by title")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "200", description = "Books retrieved successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_FOUND, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "200", description = "No books found matching the search criteria", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_NOT_FOUND_FOR_SEARCH, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<List<BookResponseDTO>>> handleGetBooksByTitle(
@@ -172,13 +173,13 @@ public class BookController {
     Page<Book> pagination = service.getBooksByTitle(title, pageNo, pageSize, sortBy, order);
     List<BookResponseDTO> books = pagination.getContent().stream()
         .map(this::convertToBookResponseDTO)
-        .collect(Collectors.toList());
+        .toList();
     PaginationResponseDTO paginationData = buildPaginationResponse(pagination, order, sortBy);
 
     return new ResponseEntity<>(ApiResponseDTO.<List<BookResponseDTO>>builder()
-        .status("success")
+        .status(AppConstants.SUCCESS)
         .statusCode(HttpStatus.OK.value())
-        .message(!books.isEmpty() ? "Books retrieved successfully" : "No books found matching the search criteria")
+        .message(!books.isEmpty() ? AppConstants.BOOK_FOUND : AppConstants.BOOK_NOT_FOUND_FOR_SEARCH)
         .data(books)
         .pagination(paginationData)
         .build(), HttpStatus.OK);
@@ -188,11 +189,11 @@ public class BookController {
   @GetMapping("/search-by-isbn")
   @Operation(summary = "Get books by ISBN")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "200", description = "Books retrieved successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_FOUND, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "200", description = "No books found matching the search criteria", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_NOT_FOUND_FOR_SEARCH, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<List<BookResponseDTO>>> handleGetBooksByIsbn(
@@ -210,13 +211,13 @@ public class BookController {
     Page<Book> pagination = service.getBooksByIsbn(isbn, pageNo, pageSize, sortBy, order);
     List<BookResponseDTO> books = pagination.getContent().stream()
         .map(this::convertToBookResponseDTO)
-        .collect(Collectors.toList());
+        .toList();
     PaginationResponseDTO paginationData = buildPaginationResponse(pagination, order, sortBy);
 
     return new ResponseEntity<>(ApiResponseDTO.<List<BookResponseDTO>>builder()
-        .status("success")
+        .status(AppConstants.SUCCESS)
         .statusCode(HttpStatus.OK.value())
-        .message(!books.isEmpty() ? "Books retrieved successfully" : "No books found matching the search criteria")
+        .message(!books.isEmpty() ? AppConstants.BOOK_FOUND : AppConstants.BOOK_NOT_FOUND_FOR_SEARCH)
         .data(books)
         .pagination(paginationData)
         .build(), HttpStatus.OK);
@@ -225,11 +226,11 @@ public class BookController {
   @GetMapping("")
   @Operation(summary = "Get all books")
   @ApiResponses( value = {
-      @ApiResponse(responseCode = "200", description = "Book retrieved successfully", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.BOOK_FOUND, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "200", description = "No books found", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "200", description = AppConstants.NO_BOOKS_FOUND, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ApiResponseDTO.class)) }),
-      @ApiResponse(responseCode = "500", description = "Internal Server Error", content = { @Content(mediaType =
+      @ApiResponse(responseCode = "500", description = AppConstants.INTERNAL_SERVER_ERROR, content = { @Content(mediaType =
           "application/json", schema = @Schema(implementation = ErrorResponseDTO.class)) }),
   })
   public ResponseEntity<ApiResponseDTO<List<BookResponseDTO>>> handleGetAllBooks(
@@ -245,13 +246,13 @@ public class BookController {
     Page<Book> pagination = service.getAllBooks(pageNo, pageSize, sortBy, order);
     List<BookResponseDTO> books = pagination.getContent().stream()
         .map(this::convertToBookResponseDTO)
-        .collect(Collectors.toList());
+        .toList();
     PaginationResponseDTO paginationData = buildPaginationResponse(pagination, order, sortBy);
 
     return new ResponseEntity<>(ApiResponseDTO.<List<BookResponseDTO>>builder()
-        .status("success")
+        .status(AppConstants.SUCCESS)
         .statusCode(HttpStatus.OK.value())
-        .message(!books.isEmpty() ? "Books retrieved successfully" : "No books found")
+        .message(!books.isEmpty() ? AppConstants.BOOK_FOUND : AppConstants.NO_BOOKS_FOUND)
         .data(books)
         .pagination(paginationData)
         .build(), HttpStatus.OK);
