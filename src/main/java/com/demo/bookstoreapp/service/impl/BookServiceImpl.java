@@ -64,8 +64,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @CachePut(value = "books", key = "#bookRequest
-id")
+  @CachePut(value = "books", key = "#bookRequest.id")
   public BookResponseDTO updateBook(
       String id,
       BookRequestDTO bookRequest,
