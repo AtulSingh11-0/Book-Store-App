@@ -47,7 +47,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @CachePut(value = "book", key = "#bookRequest.isbn")
+  @CachePut(value = "books", key = "#bookRequest.id")
   public BookResponseDTO createBook(
       BookRequestDTO bookRequest,
       MultipartFile image
@@ -64,7 +64,8 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @CachePut(value = "book", key = "#id")
+  @CachePut(value = "books", key = "#bookRequest
+id")
   public BookResponseDTO updateBook(
       String id,
       BookRequestDTO bookRequest,
@@ -93,7 +94,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @CacheEvict(value = "book", key = "#id")
+  @CacheEvict(value = "books", key = "#id")
   public void deleteBook(String id) {
     checkBookExistsById(id);
     repository.findById(id).ifPresent(book -> {
@@ -105,7 +106,7 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @Cacheable(value = "book", key = "#id")
+  @Cacheable(value = "books", key = "#id")
   public BookResponseDTO getBook(String id) {
     Book book = repository.findById(id)
         .orElseThrow(() -> new BookWithIdNotFoundException(id));
